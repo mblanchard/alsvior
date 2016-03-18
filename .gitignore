@@ -11,3 +11,6 @@ Alsvior.Utility/bin/
 Alsvior.Utility/obj/
 Alsvior.Weather/bin/
 Alsvior.Weather/obj/
+ExternalConfig/Cassandra.config
+ExternalConfig/Slack.config
+ExternalConfig/Weather.config
