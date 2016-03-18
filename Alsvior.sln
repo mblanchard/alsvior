@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Api", "Alsvior.Api\Alsvior.Api.csproj", "{577F5D2C-BABD-4437-98BC-1DD30DD75AFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.DAL", "Alsvior.DAL\Alsvior.DAL.csproj", "{B7420BE5-5D5E-44E9-8545-F5EE31027F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.ConsoleApp", "Alsvior.ConsoleApp\Alsvior.ConsoleApp.csproj", "{F83ED8E9-5318-475C-85C6-7296ABA618A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Representations", "Alsvior.Representations\Alsvior.Representations.csproj", "{9F2F1BD3-592F-4E8F-B578-353F5906E304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Utility", "Alsvior.Utility\Alsvior.Utility.csproj", "{6FBD274E-208E-4232-A759-1C9DFC74B7F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Weather", "Alsvior.Weather\Alsvior.Weather.csproj", "{88346A08-6CA8-479E-BACF-9D659ECA9924}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalConfig", "ExternalConfig", "{61458A39-5987-4923-AAF6-F92E55EB5B52}"
+	ProjectSection(SolutionItems) = preProject
+		ExternalConfig\Cassandra.config = ExternalConfig\Cassandra.config
+		ExternalConfig\Slack.config = ExternalConfig\Slack.config
+		ExternalConfig\Weather.config = ExternalConfig\Weather.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{577F5D2C-BABD-4437-98BC-1DD30DD75AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577F5D2C-BABD-4437-98BC-1DD30DD75AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577F5D2C-BABD-4437-98BC-1DD30DD75AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577F5D2C-BABD-4437-98BC-1DD30DD75AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FBD274E-208E-4232-A759-1C9DFC74B7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBD274E-208E-4232-A759-1C9DFC74B7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBD274E-208E-4232-A759-1C9DFC74B7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBD274E-208E-4232-A759-1C9DFC74B7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+packages/
+Alsvior.ConsoleApp/bin/
+Alsvior.Api/obj/
+Alsvior.ConsoleApp/obj/
+Alsvior.Api/bin/
+Alsvior.DAL/bin/
+Alsvior.DAL/obj/
+Alsvior.Representations/obj/
+Alsvior.ServiceIntegration/obj/
+Alsvior.Utility/bin/
+Alsvior.Utility/obj/
+Alsvior.Weather/bin/
+Alsvior.Weather/obj/
