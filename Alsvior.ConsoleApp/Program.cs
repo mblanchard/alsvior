@@ -1,9 +1,9 @@
 ﻿using Alsvior.DAL;
 using Alsvior.Weather;
-using Alsvior.Utility.Config;
+using Alsvior.Representations.Config;
 using System;
 using System.Linq;
-using Alsvior.Utility.Slack;
+using Alsvior.Representations.Slack;
 
 namespace Alsvior.ConsoleApp
 {
@@ -23,19 +23,22 @@ namespace Alsvior.ConsoleApp
             PrintPrompt();
 
             string line;
+            var date = DateTime.SpecifyKind(DateTime.Now.Date, DateTimeKind.Utc);
             while ((line = Console.ReadLine()) != null)
             {
                 for(int i = 0; i < 650; i++)
                 {
-                    var date = DateTime.Now.AddDays(i * -2);
+                    date = date.AddDays(-1);
                     var result = _weatherClient.GetWeather(line,date);
                     _cassandraClient.Insert(result?.Hourly);
                     _cassandraClient.Insert(result?.Daily);
 
                     if (result?.Hourly != null && result.Hourly.Any() && result?.Daily != null && result.Daily.Any())
                     {
-                        var message = String.Format("Added {0} hourly forecast(s) and {1} daily forecast(s) for date {2}", result.Hourly.Count, result.Daily.Count, date.ToShortDateString());
-                        Console.WriteLine("Got Weather");
+                        var message = String.Format("Added {0} hourly forecast(s) and {1} daily forecast for node {2} on date {3}", 
+                            result.Hourly.Count, result.Daily.Count, line, date.ToShortDateString());
+                        Console.WriteLine("Got Weather: " + date.ToShortDateString());
+                        /*
                         var slackPost = _slackClient.PostMessage(message, "Sun");
                         if (slackPost)
                         {
@@ -44,6 +47,7 @@ namespace Alsvior.ConsoleApp
                         else {
                             Console.WriteLine("But I couldn't find Slack :(");
                         }
+                        */
                     }
                     else
                     {

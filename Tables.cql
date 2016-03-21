@@ -1,6 +1,6 @@
-CREATE TABLE weatherHourly ( 
-  latitude double,
-  longitude double,
+CREATE TABLE solarpoc.weatherHourly ( 
+  latitude int,
+  longitude int,
   
   apparentTemperature float,
   cloudCover float,
@@ -23,9 +23,9 @@ CREATE TABLE weatherHourly (
 );
   
   
-CREATE TABLE weatherDaily (
-  latitude double,
-  longitude double,
+CREATE TABLE solarpoc.weatherDaily (
+  latitude int,
+  longitude int,
   
   apparentTemperatureMax float,
   apparentTemperatureMaxTime bigint,

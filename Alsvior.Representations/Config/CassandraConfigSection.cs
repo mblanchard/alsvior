@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
-namespace Alsvior.Utility.Config
+namespace Alsvior.Representations.Config
 {
     public class CassandraConfigSection : ConfigurationSection
     {

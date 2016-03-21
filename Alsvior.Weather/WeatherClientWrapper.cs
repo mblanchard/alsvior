@@ -1,15 +1,15 @@
 ﻿using Alsvior.Representations;
-using Alsvior.Utility.Config;
+using Alsvior.Representations.Config;
+using Alsvior.Representations.Interfaces;
+using Alsvior.Utility;
 using ForecastIO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alsvior.Weather
 {
-    public class WeatherClientWrapper
+    public class WeatherClientWrapper: IWeatherClientWrapper
     {
         #region Properties
         private WeatherConfig _config;
@@ -24,18 +24,26 @@ namespace Alsvior.Weather
         {
             var matchingNode = _config.Nodes.FirstOrDefault(x => x.Name == nodeName);
             if (matchingNode == null) return null;
-            var lat = matchingNode.Latitude;
-            var lon = matchingNode.Longitude;
+            var fixedPointLat = matchingNode.Latitude;
+            var fixedPointLon = matchingNode.Longitude;
 
-            var request = time.HasValue? new ForecastIORequest(_config.APIKey, lat, lon, time.Value,Unit.us):new ForecastIORequest(_config.APIKey, lat, lon, Unit.us);
+            var lat = FixedPointCoordConversion.ToFloat(fixedPointLat);
+            var lon = FixedPointCoordConversion.ToFloat(fixedPointLon);
+
+            var request = time.HasValue ? new ForecastIORequest(_config.APIKey, lat, lon, time.Value, Unit.us) : new ForecastIORequest(_config.APIKey, lat, lon, Unit.us);
             var response = request.Get();
             var report = new WeatherReport();
-            report.Hourly = response.hourly?.data?.Select(x => MapWeatherHourly(x,lat, lon)).ToList();
-            report.Daily = response.daily?.data?.Select(x => MapWeatherDaily(x, lat, lon)).ToList();
+            report.Hourly = response.hourly?.data?.Select(x => MapWeatherHourly(x, fixedPointLat, fixedPointLon)).ToList();
+            report.Daily = response.daily?.data?.Select(x => MapWeatherDaily(x, fixedPointLat, fixedPointLon)).ToList();
             return report;
         }
 
-        private WeatherDaily MapWeatherDaily(DailyForecast daily, double latitude, double longitude)
+        public List<WeatherNode> GetNodes()
+        {
+            return _config.Nodes;
+        }
+
+        private WeatherDaily MapWeatherDaily(DailyForecast daily, int latitude, int longitude)
         {
             return new WeatherDaily()
             {
@@ -69,7 +77,7 @@ namespace Alsvior.Weather
                 Longitude = longitude
             };
         }
-        private WeatherHourly MapWeatherHourly(HourForecast daily, double latitude, double longitude)
+        private WeatherHourly MapWeatherHourly(HourForecast daily, int latitude, int longitude)
         {
             return new WeatherHourly()
             {

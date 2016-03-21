@@ -1,4 +1,5 @@
-﻿using Alsvior.Utility.Config;
+﻿using Alsvior.Representations.Interfaces;
+using Alsvior.Representations.Config;
 using Cassandra;
 using Cassandra.Data.Linq;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Alsvior.DAL
 {
-    public class CassandraClient
+    public class CassandraClient: ICassandraClient
     {
         #region Properties
         private Cluster _cluster;
@@ -20,6 +21,7 @@ namespace Alsvior.DAL
         #endregion Properties
 
         #region Constructor
+
         public CassandraClient(CassandraConfig config)
         {
             _config = config;
@@ -32,11 +34,11 @@ namespace Alsvior.DAL
         }
         #endregion Constructor
 
-        public List<T> Get<T>(Expression<Func<T,bool>> filter, string keyspace = null) where T : class
+        public IEnumerable<T> Get<T>(Expression<Func<T,bool>> filter, string keyspace = null) where T : class
         {
             var session = _cluster.Connect(keyspace ?? _keyspace);
             var table = new Table<T>(session);
-            return table.Where(filter).ToList();
+            return table.Where(filter).Execute();
         }
 
         public void Insert<T>(List<T> records, string keyspace = null) where T : class

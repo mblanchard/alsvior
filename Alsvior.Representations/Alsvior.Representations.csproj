@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,10 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WeatherDaily.cs" />
+    <Compile Include="Config\CassandraConfig.cs" />
+    <Compile Include="Config\CassandraConfigSection.cs" />
+    <Compile Include="Config\SlackConfig.cs" />
+    <Compile Include="Config\SlackConfigSection.cs" />
+    <Compile Include="Config\SlackIcon.cs" />
+    <Compile Include="Config\WeatherConfig.cs" />
+    <Compile Include="Config\WeatherConfigSection.cs" />
+    <Compile Include="Config\WeatherNode.cs" />
+    <Compile Include="Interfaces\ICassandraClient.cs" />
+    <Compile Include="Interfaces\ISlackClientWrapper.cs" />
+    <Compile Include="Interfaces\IWeatherClientWrapper.cs" />
+    <Compile Include="Models\WeatherDaily.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeatherHourly.cs" />
-    <Compile Include="WeatherReport.cs" />
+    <Compile Include="Models\WeatherHourly.cs" />
+    <Compile Include="Models\WeatherReport.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alsvior.Utility\Alsvior.Utility.csproj">
+      <Project>{6fbd274e-208e-4232-a759-1c9dfc74b7f3}</Project>
+      <Name>Alsvior.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

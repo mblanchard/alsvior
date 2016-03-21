@@ -1,14 +1,13 @@
-﻿using Alsvior.Utility.Config;
+﻿using Alsvior.Representations.Config;
+using Alsvior.Representations.Interfaces;
 using Slack.Webhooks;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Alsvior.Utility.Slack
+namespace Alsvior.Representations.Slack
 {
-    public class SlackClientWrapper
+    public class SlackClientWrapper: ISlackClientWrapper
     {
         #region Properties
         SlackClient _client;

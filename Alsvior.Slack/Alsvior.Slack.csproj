@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6FBD274E-208E-4232-A759-1C9DFC74B7F3}</ProjectGuid>
+    <ProjectGuid>{AA712F1D-9436-4E6D-B38F-53D18344F188}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alsvior.Utility</RootNamespace>
-    <AssemblyName>Alsvior.Utility</AssemblyName>
+    <RootNamespace>Alsvior.Slack</RootNamespace>
+    <AssemblyName>Alsvior.Slack</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,8 +42,12 @@
       <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Slack.Webhooks, Version=0.1.6.15378, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Slack.Webhooks.0.1.6\lib\net40\Slack.Webhooks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,8 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FixedPointCoordConversion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlackClientWrapper.cs" />
+    <Compile Include="SlackDependencyModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alsvior.Representations\Alsvior.Representations.csproj">
+      <Project>{9f2f1bd3-592f-4e8f-b578-353f5906e304}</Project>
+      <Name>Alsvior.Representations</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

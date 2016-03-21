@@ -71,6 +71,10 @@
       <Project>{9f2f1bd3-592f-4e8f-b578-353f5906e304}</Project>
       <Name>Alsvior.Representations</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Alsvior.Slack\Alsvior.Slack.csproj">
+      <Project>{aa712f1d-9436-4e6d-b38f-53d18344f188}</Project>
+      <Name>Alsvior.Slack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alsvior.Utility\Alsvior.Utility.csproj">
       <Project>{6fbd274e-208e-4232-a759-1c9dfc74b7f3}</Project>
       <Name>Alsvior.Utility</Name>

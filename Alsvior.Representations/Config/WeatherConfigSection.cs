@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
-namespace Alsvior.Utility.Config
+namespace Alsvior.Representations.Config
 {
     public class WeatherConfigSection : ConfigurationSection
     {
@@ -83,15 +83,15 @@ namespace Alsvior.Utility.Config
             set { this["name"] = value; }
         }
         [ConfigurationProperty("lat", IsRequired = true)]
-        public float Latitude
+        public int Latitude
         {
-            get { return (float)this["lat"]; }
+            get { return (int)this["lat"]; }
             set { this["lat"] = value; }
         }
         [ConfigurationProperty("long", IsRequired = true)]
-        public float Longitude
+        public int Longitude
         {
-            get { return (float)this["long"]; }
+            get { return (int)this["long"]; }
             set { this["long"] = value; }
         }
     }
