@@ -21,8 +21,7 @@ CREATE TABLE solarpoc.weatherHourly (
 
   PRIMARY KEY ((latitude, longitude), time)
 );
-  
-  
+
 CREATE TABLE solarpoc.weatherDaily (
   latitude int,
   longitude int,
@@ -55,4 +54,22 @@ CREATE TABLE solarpoc.weatherDaily (
   
   PRIMARY KEY ((latitude, longitude), time)
 );
-  
+
+CREATE TABLE solarpoc.weatherNode (
+  latitude int,
+  longitude int,
+  name varchar,
+
+  PRIMARY KEY ((latitude, longitude))
+);
+
+CREATE TABLE  solarpoc.inverterNode (
+  latitude int,
+  longitude int,
+  city varchar,
+  state varchar,
+  zip_short varchar,
+  utility varchar,
+
+  PRIMARY KEY ((latitude, longitude))
+);

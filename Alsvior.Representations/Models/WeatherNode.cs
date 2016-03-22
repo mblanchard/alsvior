@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alsvior.Representations.Config
+namespace Alsvior.Representations.Models
 {
     public class WeatherNode
     {
+        public int Latitude { get; set; }
+        public int Longitude { get; set; }
         public string Name { get; set; }
-        public int Latitude { get; set; } //Fixed Point
-        public int Longitude { get; set; } //Fixed Point
     }
 }

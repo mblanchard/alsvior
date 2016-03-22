@@ -1,6 +1,7 @@
 ﻿using Alsvior.DAL;
 using Alsvior.Representations;
 using Alsvior.Representations.Interfaces;
+using Alsvior.Representations.Models;
 using Alsvior.Utility;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Alsvior.Api.Controllers
         [Route("nodes")]
         public IHttpActionResult GetNodes()
         {
-            var nodes = _weather.GetNodes();
+            var nodes = _cassandra.Get<WeatherNode>();
             return Ok(nodes);
         }
 

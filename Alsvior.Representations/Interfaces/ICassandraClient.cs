@@ -9,7 +9,7 @@ namespace Alsvior.Representations.Interfaces
 {
     public interface ICassandraClient
     {
-        IEnumerable<T> Get<T>(Expression<Func<T, bool>> filter, string keyspace = null) where T : class;
+        IEnumerable<T> Get<T>(Expression<Func<T, bool>> filter = null, string keyspace = null) where T : class;
         void Insert<T>(List<T> records, string keyspace = null) where T : class;
     }
 }

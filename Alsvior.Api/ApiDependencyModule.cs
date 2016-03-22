@@ -11,6 +11,7 @@ namespace Alsvior.Api
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<InverterController>().InstancePerRequest();
             builder.RegisterType<WeatherController>().InstancePerRequest();
             base.Load(builder);
         }

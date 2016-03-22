@@ -48,11 +48,12 @@
     <Compile Include="Config\SlackIcon.cs" />
     <Compile Include="Config\WeatherConfig.cs" />
     <Compile Include="Config\WeatherConfigSection.cs" />
-    <Compile Include="Config\WeatherNode.cs" />
     <Compile Include="Interfaces\ICassandraClient.cs" />
     <Compile Include="Interfaces\ISlackClientWrapper.cs" />
     <Compile Include="Interfaces\IWeatherClientWrapper.cs" />
+    <Compile Include="Models\InverterNode.cs" />
     <Compile Include="Models\WeatherDaily.cs" />
+    <Compile Include="Models\WeatherNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\WeatherHourly.cs" />
     <Compile Include="Models\WeatherReport.cs" />

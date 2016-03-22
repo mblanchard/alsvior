@@ -34,20 +34,29 @@ namespace Alsvior.DAL
         }
         #endregion Constructor
 
-        public IEnumerable<T> Get<T>(Expression<Func<T,bool>> filter, string keyspace = null) where T : class
+        public IEnumerable<T> Get<T>(Expression<Func<T,bool>> filter = null, string keyspace = null) where T : class
         {
-            var session = _cluster.Connect(keyspace ?? _keyspace);
-            var table = new Table<T>(session);
-            return table.Where(filter).Execute();
+            using(var session = _cluster.Connect(keyspace ?? _keyspace))
+            {
+                var table = new Table<T>(session);
+                if (filter != null)
+                {
+                    return table.Where(filter).Execute();
+                }
+                else return table.Execute();
+            }
+           
         }
 
         public void Insert<T>(List<T> records, string keyspace = null) where T : class
         {
-            var session = _cluster.Connect(keyspace ?? _keyspace);
-            var table = new Table<T>(session);
-            var insertQueries = records.Select(x => table.Insert(x).ExecuteAsync()).ToList();
-            Task.WaitAll(insertQueries.ToArray());
-            return;
+            using (var session = _cluster.Connect(keyspace ?? _keyspace))
+            {
+                var table = new Table<T>(session);
+                var insertQueries = records.Select(x => table.Insert(x).ExecuteAsync()).ToList();
+                Task.WaitAll(insertQueries.ToArray());
+                return;
+            }
         }
     }
 }

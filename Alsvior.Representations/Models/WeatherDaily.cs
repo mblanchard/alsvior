@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alsvior.Representations
+namespace Alsvior.Representations.Models
 {
     public class WeatherDaily
     {

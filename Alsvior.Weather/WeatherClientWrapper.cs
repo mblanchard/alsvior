@@ -1,6 +1,7 @@
 ﻿using Alsvior.Representations;
 using Alsvior.Representations.Config;
 using Alsvior.Representations.Interfaces;
+using Alsvior.Representations.Models;
 using Alsvior.Utility;
 using ForecastIO;
 using System;
