@@ -16,3 +16,4 @@ ExternalConfig/Slack.config
 ExternalConfig/Weather.config
 Alsvior.Slack/bin/
 Alsvior.Slack/obj/
+ExternalConfig/Connections.config

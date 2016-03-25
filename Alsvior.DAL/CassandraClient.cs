@@ -35,6 +35,7 @@ namespace Alsvior.DAL
         #endregion Constructor
 
         public IEnumerable<T> Get<T>(Expression<Func<T,bool>> filter = null, string keyspace = null) where T : class
+
         {
             using(var session = _cluster.Connect(keyspace ?? _keyspace))
             {
