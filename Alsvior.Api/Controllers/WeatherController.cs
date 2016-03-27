@@ -13,6 +13,7 @@ using System.Web.Http;
 namespace Alsvior.Api.Controllers
 {
     [RoutePrefix("api/weather")]
+    [Authorize]
     public class WeatherController : ApiController
     {
         private ICassandraClient _cassandra;

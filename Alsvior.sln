@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalConfig", "ExternalConfig", "{61458A39-5987-4923-AAF6-F92E55EB5B52}"
 	ProjectSection(SolutionItems) = preProject
 		ExternalConfig\Cassandra.config = ExternalConfig\Cassandra.config
+		ExternalConfig\Connections.config = ExternalConfig\Connections.config
 		ExternalConfig\Slack.config = ExternalConfig\Slack.config
 		Tables.cql = Tables.cql
 		ExternalConfig\Weather.config = ExternalConfig\Weather.config

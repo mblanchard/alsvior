@@ -10,6 +10,7 @@ using System.Web.Http;
 namespace Alsvior.Api.Controllers
 {
     [RoutePrefix("api/inverter")]
+    [Authorize]
     public class InverterController : ApiController
     {
         private ICassandraClient _cassandra;

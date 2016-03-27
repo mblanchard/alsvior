@@ -39,6 +39,12 @@ namespace Alsvior.DAL.Auth
             return user;
         }
 
+        public async Task<bool> ValidateUser(string userName, string password)
+        {
+            IdentityUser user = await _userManager.FindAsync(userName, password);
+            return user != null;
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();

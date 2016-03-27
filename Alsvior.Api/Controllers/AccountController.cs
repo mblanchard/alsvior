@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Alsvior.Api.Controllers
 {
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
         private AuthRepository _repo = null;
