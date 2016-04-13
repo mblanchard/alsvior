@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alsvior.Representations.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Alsvior.Representations.Models
 {
-    public class WeatherHourly
+    public class WeatherHourly : ILocatable
     {
         #region Coord Properties
         public int Latitude { get; set; } //Fixed-point

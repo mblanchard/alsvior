@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Alsvior.ServiceIntegration")]
+[assembly: AssemblyTitle("Alsvior.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Alsvior.ServiceIntegration")]
+[assembly: AssemblyProduct("Alsvior.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("23e6ca90-e178-41f9-ab51-178a37b3e311")]
+[assembly: Guid("99075ed7-975a-4b2c-9834-68951daa9f18")]
 
 // Version information for an assembly consists of the following four values:
 //

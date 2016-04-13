@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FixedPointCoordConversion.cs" />
+    <Compile Include="Geometry.cs" />
+    <Compile Include="ILocatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

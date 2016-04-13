@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Alsvior.Api
 {
@@ -15,6 +16,9 @@ namespace Alsvior.Api
             var container = ContainerConfig.BuildContainer(config);
             var webApiResolver = ContainerConfig.GetApiDependencyResolver(container);
             config.DependencyResolver = webApiResolver;
+
+            //CORS
+            config.EnableCors();
 
 
             // Web API routes

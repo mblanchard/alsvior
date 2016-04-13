@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace Alsvior.Representations.Models
 {
-    public class InverterNode: ILocatable
+    public class InverterData: ILocatable
     {
         #region Coord Properties
         public int Latitude { get; set; }
         public int Longitude { get; set; }
         #endregion Coord Properties
 
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip_Short { get; set; }
-        public string Utility { get; set; }
+
     }
 }

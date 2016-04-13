@@ -1,17 +1,13 @@
-﻿using Alsvior.DAL;
-using Alsvior.Representations;
+﻿using Alsvior.Core;
 using Alsvior.Representations.Interfaces;
 using Alsvior.Representations.Models;
-using Alsvior.Utility;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Alsvior.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/weather")]
     [Authorize]
     public class WeatherController : ApiController
@@ -32,12 +28,20 @@ namespace Alsvior.Api.Controllers
             return Ok(nodes);
         }
 
+        [Route("{latitude}/{longitude}/nodes")]
+        public IHttpActionResult GetNodesForCoord(int latitude, int longitude)
+        {
+            var nodes = _cassandra.Get<WeatherNode>();
+            var filter = new DistanceFilter<WeatherNode>(latitude, longitude, 40000); //40 km
+            return Ok(filter.FilterCoords(nodes));
+        }
+
 
         [Route("{latitude}/{longitude}/{time}/hourly")]
         public IHttpActionResult GetHourly(int latitude, int longitude, long time)
         {
-            var hourlyResult = _cassandra.Get<WeatherHourly>(x => x.Latitude == latitude 
-            && x.Longitude == longitude && x.Time == time);
+            var hourlyResult = _cassandra.Get<WeatherHourly>(x => x.Latitude == latitude
+            && x.Longitude == longitude && x.Time == time).ToList();
             return Ok(hourlyResult);
         }
 
@@ -46,6 +50,14 @@ namespace Alsvior.Api.Controllers
         {
             var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude 
             && x.Longitude == longitude && x.Time == time).ToList();
+            return Ok(dailyResult);
+        }
+
+        [Route("{latitude}/{longitude}/daily")]
+        public IHttpActionResult GetMostRecentDaily(int latitude, int longitude)
+        {
+            var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
+            && x.Longitude == longitude).OrderByDescending(x=> x.Time).FirstOrDefault();
             return Ok(dailyResult);
         }
 

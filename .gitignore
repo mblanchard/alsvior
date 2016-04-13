@@ -17,3 +17,9 @@ ExternalConfig/Weather.config
 Alsvior.Slack/bin/
 Alsvior.Slack/obj/
 ExternalConfig/Connections.config
+ExternalConfig/Log4Net.config
+Alsvior.Api/Properties/PublishProfiles/
+Alsvior.Core/obj/
+Alsvior.Representations/bin/
+ExternalConfig/Event.config
+PublishingProfiles/

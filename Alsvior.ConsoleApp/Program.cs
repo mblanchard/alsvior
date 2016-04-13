@@ -18,6 +18,7 @@ namespace Alsvior.ConsoleApp
             Console.WriteLine("Provide the weather node name");
         }
 
+
         static void Run()
         {
             PrintPrompt();
@@ -28,7 +29,6 @@ namespace Alsvior.ConsoleApp
             {
                 for(int i = 0; i < 650; i++)
                 {
-                    date = date.AddDays(-1);
                     var result = _weatherClient.GetWeather(line,date);
                     _cassandraClient.Insert(result?.Hourly);
                     _cassandraClient.Insert(result?.Daily);
@@ -53,6 +53,7 @@ namespace Alsvior.ConsoleApp
                     {
                         Console.WriteLine("I fell down :(");
                     }
+                    date = date.AddDays(-1);
                 }
                
                     
