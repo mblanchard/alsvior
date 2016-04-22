@@ -1,6 +1,11 @@
-﻿using Alsvior.DAL;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Alsvior.DAL;
 using Alsvior.Representations;
 using Alsvior.Slack;
+using Alsvior.Weather;
 using Alsvior.Weather;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -8,7 +13,7 @@ using System.Web.Http;
 
 namespace Alsvior.Api
 {
-    class ContainerConfig
+    public class ContainerConfig
     {
         public static AutofacWebApiDependencyResolver GetApiDependencyResolver(IContainer container)
         {

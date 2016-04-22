@@ -24,8 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalConfig", "ExternalC
 		ExternalConfig\Weather.config = ExternalConfig\Weather.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Api", "Alsvior.Api\Alsvior.Api.csproj", "{E75958CD-EC76-41DA-80D2-C49E60188C24}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Slack", "Alsvior.Slack\Alsvior.Slack.csproj", "{AA712F1D-9436-4E6D-B38F-53D18344F188}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishingProfiles", "PublishingProfiles", "{56341BC7-5013-4865-8DDA-B5AAAAA4C9AE}"
@@ -36,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Core", "Alsvior.Core\Alsvior.Core.csproj", "{99075ED7-975A-4B2C-9834-68951DAA9F18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Inverters", "Alsvior.Inverters\Alsvior.Inverters.csproj", "{4DA688D4-014B-4D1D-A2A6-CB93E025DE6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Api", "Alsvior.Api\Alsvior.Api.csproj", "{4DACAA5F-1059-4579-A68B-C499A2B22338}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,14 +85,6 @@ Global
 		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Release|x64.ActiveCfg = Release|Any CPU
 		{88346A08-6CA8-479E-BACF-9D659ECA9924}.Release|x64.Build.0 = Release|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Debug|x64.Build.0 = Debug|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Release|x64.ActiveCfg = Release|Any CPU
-		{E75958CD-EC76-41DA-80D2-C49E60188C24}.Release|x64.Build.0 = Release|Any CPU
 		{AA712F1D-9436-4E6D-B38F-53D18344F188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA712F1D-9436-4E6D-B38F-53D18344F188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA712F1D-9436-4E6D-B38F-53D18344F188}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -117,6 +109,14 @@ Global
 		{4DA688D4-014B-4D1D-A2A6-CB93E025DE6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DA688D4-014B-4D1D-A2A6-CB93E025DE6F}.Release|x64.ActiveCfg = Release|Any CPU
 		{4DA688D4-014B-4D1D-A2A6-CB93E025DE6F}.Release|x64.Build.0 = Release|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Debug|x64.Build.0 = Debug|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|x64.ActiveCfg = Release|Any CPU
+		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

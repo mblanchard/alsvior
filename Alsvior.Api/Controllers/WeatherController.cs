@@ -1,7 +1,11 @@
 ﻿using Alsvior.Core;
 using Alsvior.Representations.Interfaces;
 using Alsvior.Representations.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -47,7 +51,7 @@ namespace Alsvior.Api.Controllers
         [Route("{latitude}/{longitude}/{time}/daily")]
         public IHttpActionResult GetDaily(int latitude, int longitude, long time)
         {
-            var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude 
+            var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
             && x.Longitude == longitude && x.Time == time).ToList();
             return Ok(dailyResult);
         }
@@ -56,7 +60,7 @@ namespace Alsvior.Api.Controllers
         public IHttpActionResult GetMostRecentDaily(int latitude, int longitude)
         {
             var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
-            && x.Longitude == longitude).OrderByDescending(x=> x.Time).FirstOrDefault();
+            && x.Longitude == longitude).OrderByDescending(x => x.Time).FirstOrDefault();
             return Ok(dailyResult);
         }
 
@@ -78,4 +82,5 @@ namespace Alsvior.Api.Controllers
         }
 
     }
+
 }

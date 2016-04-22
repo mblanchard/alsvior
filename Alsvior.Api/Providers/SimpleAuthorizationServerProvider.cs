@@ -23,7 +23,7 @@ namespace Alsvior.Api.Providers
 
             using (AuthRepository _repo = new AuthRepository())
             {
-                 var isValid = await _repo.ValidateUser(context.UserName, context.Password);
+                var isValid = await _repo.ValidateUser(context.UserName, context.Password);
 
                 if (!isValid)
                 {
@@ -40,4 +40,5 @@ namespace Alsvior.Api.Providers
 
         }
     }
+
 }

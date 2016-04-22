@@ -1,5 +1,7 @@
 ﻿using Alsvior.Representations.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
@@ -36,8 +38,8 @@ namespace Alsvior.Api.Controllers
                 var notification = new Notification(41879751, -87634685, DateTime.Now.Ticks, "Notification #" + count++);
                 ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
                 if (socket.State == WebSocketState.Open)
-                {                 
-                    buffer = new ArraySegment<byte>( Encoding.UTF8.GetBytes(notification.ToString()));
+                {
+                    buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes(notification.ToString()));
                     await socket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
                 }
                 else
@@ -47,4 +49,5 @@ namespace Alsvior.Api.Controllers
             }
         }
     }
+
 }

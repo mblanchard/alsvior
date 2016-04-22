@@ -1,6 +1,7 @@
 ﻿using Alsvior.Representations.Interfaces;
 using Alsvior.Representations.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -42,12 +43,12 @@ namespace Alsvior.Api.Controllers
             while (true)
             {
                 var sleepDuration = (int)(randomGen.NextDouble() * 1000);
-                
+
                 int id = (int)(randomGen.NextDouble() * count);
                 var node = _cassandra.Get<InverterNode>().Skip(id).FirstOrDefault();
                 if (node == null) continue;
 
-                var status = randomGen.NextDouble().ToString();          
+                var status = randomGen.NextDouble().ToString();
                 var notification = new Notification(node.Latitude, node.Longitude, DateTime.Now.Ticks, status);
                 ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
                 if (socket.State == WebSocketState.Open)
