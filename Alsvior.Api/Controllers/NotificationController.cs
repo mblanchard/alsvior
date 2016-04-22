@@ -19,6 +19,7 @@ namespace Alsvior.Api.Controllers
     [RoutePrefix("api/notification")]
     public class NotificationController : ApiController
     {
+        private static List<string> statusTemplates = new List<string>() { "Storm to reach #{0} in {1} minutes", "Inverter #{0} operating at {1}% capacity", "Inverter #{0} unresponsive for {1} minutes", "Inverter #{0}{1} back online", "Updated weather for location #{0}{1}" };
         public HttpResponseMessage Get()
         {
             if (HttpContext.Current.IsWebSocketRequest)
@@ -30,12 +31,16 @@ namespace Alsvior.Api.Controllers
 
         private async Task ProcessNotification(AspNetWebSocketContext context)
         {
+
             WebSocket socket = context.WebSocket;
-            int count = 0;
+            var randomGen = new Random();
             while (true)
             {
-                Thread.Sleep(1000);
-                var notification = new Notification(41879751, -87634685, DateTime.Now.Ticks, "Notification #" + count++);
+                var sleepDuration = (int)(randomGen.NextDouble() * 6000);
+                Thread.Sleep(sleepDuration);
+                var statusTemplate = statusTemplates[(int)(randomGen.NextDouble()* statusTemplates.Count)];
+                var node = (int)(randomGen.NextDouble() * 100); var value = (int)(randomGen.NextDouble() * 30);
+                var notification = new Notification(41879751, -87634685, DateTime.Now.Ticks, String.Format(statusTemplate,node,value));
                 ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
                 if (socket.State == WebSocketState.Open)
                 {
