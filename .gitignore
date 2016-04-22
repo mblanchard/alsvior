@@ -23,3 +23,5 @@ Alsvior.Core/obj/
 Alsvior.Representations/bin/
 ExternalConfig/Event.config
 PublishingProfiles/
+Alsvior.Inverters/bin/
+Alsvior.Inverters/obj/

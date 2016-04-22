@@ -24,7 +24,7 @@ namespace Alsvior.ConsoleApp
             PrintPrompt();
 
             string line;
-            var date = DateTime.SpecifyKind(DateTime.Now.Date, DateTimeKind.Utc);
+            var date = DateTime.SpecifyKind(new DateTime(2015,6,21), DateTimeKind.Utc);
             while ((line = Console.ReadLine()) != null)
             {
                 for(int i = 0; i < 650; i++)

@@ -36,7 +36,6 @@ namespace Alsvior.Api.Controllers
             return Ok(filter.FilterCoords(nodes));
         }
 
-
         [Route("{latitude}/{longitude}/{time}/hourly")]
         public IHttpActionResult GetHourly(int latitude, int longitude, long time)
         {

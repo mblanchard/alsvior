@@ -18,7 +18,6 @@ namespace Alsvior.Api
         public static IContainer BuildContainer(HttpConfiguration config = null)
         {
             var builder = new ContainerBuilder();
-
             builder.RegisterModule<ApiDependencyModule>();
             builder.RegisterModule<DALDependencyModule>();
             builder.RegisterModule<SlackDependencyModule>();
@@ -27,7 +26,6 @@ namespace Alsvior.Api
             {
                 builder.RegisterWebApiFilterProvider(config);
             }
-
             var container = builder.Build();
             return container;
         }

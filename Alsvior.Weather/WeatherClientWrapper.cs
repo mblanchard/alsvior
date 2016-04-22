@@ -78,6 +78,7 @@ namespace Alsvior.Weather
                 Longitude = longitude
             };
         }
+
         private WeatherHourly MapWeatherHourly(HourForecast daily, int latitude, int longitude)
         {
             return new WeatherHourly()
@@ -103,6 +104,5 @@ namespace Alsvior.Weather
                 Longitude = longitude
             };
         }
-
     }
 }
