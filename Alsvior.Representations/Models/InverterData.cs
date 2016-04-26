@@ -14,6 +14,8 @@ namespace Alsvior.Representations.Models
         public int Longitude { get; set; }
         #endregion Coord Properties
 
+        public double Performance { get; set; }
+
 
     }
 }

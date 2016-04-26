@@ -48,7 +48,7 @@ namespace Alsvior.Api.Controllers
                 var node = _cassandra.Get<InverterNode>().Skip(id).FirstOrDefault();
                 if (node == null) continue;
 
-                var status = randomGen.NextDouble().ToString();
+                var status = generateMockInverterPerformance(node.Latitude,node.Longitude,randomGen).ToString();
                 var notification = new Notification(node.Latitude, node.Longitude, DateTime.Now.Ticks, status);
                 ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
                 if (socket.State == WebSocketState.Open)
@@ -76,10 +76,23 @@ namespace Alsvior.Api.Controllers
         [Authorize]
         public IHttpActionResult GetMostRecentDaily(int latitude, int longitude)
         {
+            /*
             var dailyResult = _cassandra.Get<InverterData>(x => x.Latitude == latitude
             && x.Longitude == longitude).FirstOrDefault();
+            */
+            //TODO: Import InverterData and remove placeholder below
+            var rand = new Random();
+
+            var mockPerf = generateMockInverterPerformance(latitude, longitude, rand);
+            var dailyResult = new InverterData() { Latitude = latitude, Longitude = longitude, Performance = mockPerf}; 
             return Ok(dailyResult);
         }
 
+
+
+        private double generateMockInverterPerformance(int latitude, int longitude, Random rand)
+        {
+            return (Math.Abs((double)((latitude + longitude) % 10000)) / 10000) + (rand.NextDouble() / 20 - 0.05);
+        }
     }
 }
