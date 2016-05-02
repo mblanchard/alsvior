@@ -39,6 +39,28 @@ namespace Alsvior.Weather
             return report;
         }
 
+        public List<WeatherReport> GetWeatherForAllNodes(DateTime? time = null)
+        {
+            List<WeatherReport> reports = new List<WeatherReport>();
+            foreach (var matchingNode in _config.Nodes)
+            {
+                if (matchingNode == null) return null;
+                var fixedPointLat = matchingNode.Latitude;
+                var fixedPointLon = matchingNode.Longitude;
+
+                var lat = FixedPointCoordConversion.ToFloat(fixedPointLat);
+                var lon = FixedPointCoordConversion.ToFloat(fixedPointLon);
+
+                var request = time.HasValue ? new ForecastIORequest(_config.APIKey, lat, lon, time.Value, Unit.us) : new ForecastIORequest(_config.APIKey, lat, lon, Unit.us);
+                var response = request.Get();
+                var report = new WeatherReport();
+                report.Hourly = response.hourly?.data?.Select(x => MapWeatherHourly(x, fixedPointLat, fixedPointLon)).ToList();
+                report.Daily = response.daily?.data?.Select(x => MapWeatherDaily(x, fixedPointLat, fixedPointLon)).ToList();
+                reports.Add(report);
+            }
+            return reports;
+        }
+
         public List<WeatherNode> GetNodes()
         {
             return _config.Nodes;

@@ -21,45 +21,30 @@ namespace Alsvior.ConsoleApp
 
         static void Run()
         {
-            PrintPrompt();
+            var date = DateTime.SpecifyKind(new DateTime(2016,2,26), DateTimeKind.Utc);
 
-            string line;
-            var date = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
-            while ((line = Console.ReadLine()) != null)
+            for(int i = 0; i < 650; i++)
             {
-                for(int i = 0; i < 650; i++)
+                var results = _weatherClient.GetWeatherForAllNodes(date);
+                if (results == null) continue;
+                int hourlyCount = 0, dailyCount = 0, nodeCount = 0;
+                foreach (var result in results)
                 {
-                    var result = _weatherClient.GetWeather(line,date);
-                    _cassandraClient.Insert(result?.Hourly);
-                    _cassandraClient.Insert(result?.Daily);
 
                     if (result?.Hourly != null && result.Hourly.Any() && result?.Daily != null && result.Daily.Any())
                     {
-                        var message = String.Format("Added {0} hourly forecast(s) and {1} daily forecast for node {2} on date {3}", 
-                            result.Hourly.Count, result.Daily.Count, line, date.ToShortDateString());
-                        Console.WriteLine("Got Weather: " + date.ToShortDateString());
-                        /*
-                        var slackPost = _slackClient.PostMessage(message, "Sun");
-                        if (slackPost)
-                        {
-                            Console.WriteLine("And I told Slack about it :)");
-                        }
-                        else {
-                            Console.WriteLine("But I couldn't find Slack :(");
-                        }
-                        */
+                        hourlyCount += result.Hourly.Count;
+                        dailyCount += result.Daily.Count;
+                        nodeCount++;
                     }
-                    else
-                    {
-                        Console.WriteLine("I fell down :(");
-                    }
-                    date = date.AddDays(-1);
+
+                    _cassandraClient.Insert(result?.Hourly);
+                    _cassandraClient.Insert(result?.Daily);
                 }
-               
-                    
-                
-                PrintPrompt();
-            }
+                var message = String.Format("Added {0} hourly forecast(s) and {1} daily forecast for {2} nodes on {3}", hourlyCount, dailyCount, nodeCount, date.ToShortDateString());
+                Console.WriteLine(message);
+                date = date.AddDays(-1);
+            }                 
         }
 
 

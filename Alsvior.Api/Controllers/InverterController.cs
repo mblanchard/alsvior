@@ -92,7 +92,7 @@ namespace Alsvior.Api.Controllers
 
         private double generateMockInverterPerformance(int latitude, int longitude, Random rand)
         {
-            return (Math.Abs((double)((latitude + longitude) % 10000)) / 10000) + (rand.NextDouble() / 20 - 0.05);
+            return (Math.Abs((double)((latitude + longitude) % 10000)) / 10000) + (rand.NextDouble() / 20 );
         }
     }
 }
