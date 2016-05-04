@@ -49,6 +49,19 @@ namespace Alsvior.DAL
            
         }
 
+        public async Task<IEnumerable<T>> GetAsync<T>(Expression<Func<T, bool>> filter = null, string keyspace = null)
+        {
+            using (var session = _cluster.Connect(keyspace ?? _keyspace))
+            {
+                var table = new Table<T>(session);
+                if (filter != null)
+                {
+                    return await table.Where(filter).ExecuteAsync();
+                }
+                else return await table.ExecuteAsync();
+            }
+        }
+
         public void Insert<T>(List<T> records, string keyspace = null) where T : class
         {
             using (var session = _cluster.Connect(keyspace ?? _keyspace))

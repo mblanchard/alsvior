@@ -34,6 +34,7 @@ namespace Alsvior.Weather
             var request = time.HasValue ? new ForecastIORequest(_config.APIKey, lat, lon, time.Value, Unit.us) : new ForecastIORequest(_config.APIKey, lat, lon, Unit.us);
             var response = request.Get();
             var report = new WeatherReport();
+            
             report.Hourly = response.hourly?.data?.Select(x => MapWeatherHourly(x, fixedPointLat, fixedPointLon)).ToList();
             report.Daily = response.daily?.data?.Select(x => MapWeatherDaily(x, fixedPointLat, fixedPointLon)).ToList();
             return report;
