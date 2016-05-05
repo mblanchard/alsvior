@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Alsvior.ConsoleApp")]
+[assembly: AssemblyTitle("Alsvior.Jobs.HistoricalWeather")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Alsvior.ConsoleApp")]
+[assembly: AssemblyProduct("Alsvior.Jobs.HistoricalWeather")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f83ed8e9-5318-475c-85c6-7296aba618a7")]
+[assembly: Guid("03d11e4a-c443-4486-abb1-8b5fb2edee2d")]
 
 // Version information for an assembly consists of the following four values:
 //

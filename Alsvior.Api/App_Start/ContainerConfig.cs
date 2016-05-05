@@ -6,7 +6,6 @@ using Alsvior.DAL;
 using Alsvior.Representations;
 using Alsvior.Slack;
 using Alsvior.Weather;
-using Alsvior.Weather;
 using Autofac;
 using Autofac.Integration.WebApi;
 using System.Web.Http;
