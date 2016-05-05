@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.DAL", "Alsvior.DAL\Alsvior.DAL.csproj", "{B7420BE5-5D5E-44E9-8545-F5EE31027F15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.ConsoleApp", "Alsvior.ConsoleApp\Alsvior.ConsoleApp.csproj", "{F83ED8E9-5318-475C-85C6-7296ABA618A7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Representations", "Alsvior.Representations\Alsvior.Representations.csproj", "{9F2F1BD3-592F-4E8F-B578-353F5906E304}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Utility", "Alsvior.Utility\Alsvior.Utility.csproj", "{6FBD274E-208E-4232-A759-1C9DFC74B7F3}"
@@ -37,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Inverters", "Alsvio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Api", "Alsvior.Api\Alsvior.Api.csproj", "{4DACAA5F-1059-4579-A68B-C499A2B22338}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jobs", "Jobs", "{1ECEC551-93A6-48ED-8BCC-E149CB6EB9C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Jobs.HistoricalWeather", "Alsvior.Jobs.HistoricalWeather\Alsvior.Jobs.HistoricalWeather.csproj", "{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,14 +55,6 @@ Global
 		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Release|x64.ActiveCfg = Release|Any CPU
 		{B7420BE5-5D5E-44E9-8545-F5EE31027F15}.Release|x64.Build.0 = Release|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Debug|x64.Build.0 = Debug|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|x64.ActiveCfg = Release|Any CPU
-		{F83ED8E9-5318-475C-85C6-7296ABA618A7}.Release|x64.Build.0 = Release|Any CPU
 		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F2F1BD3-592F-4E8F-B578-353F5906E304}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -117,9 +111,20 @@ Global
 		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|x64.ActiveCfg = Release|Any CPU
 		{4DACAA5F-1059-4579-A68B-C499A2B22338}.Release|x64.Build.0 = Release|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Debug|x64.Build.0 = Debug|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D} = {1ECEC551-93A6-48ED-8BCC-E149CB6EB9C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
