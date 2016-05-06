@@ -1,11 +1,9 @@
 ﻿using Alsvior.Core;
 using Alsvior.Representations.Interfaces;
 using Alsvior.Representations.Models;
+using Alsvior.Utility;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -44,21 +42,23 @@ namespace Alsvior.Api.Controllers
         public IHttpActionResult GetHourly(int latitude, int longitude, long time)
         {
             var hourlyResult = _cassandra.Get<WeatherHourly>(x => x.Latitude == latitude
-            && x.Longitude == longitude && x.Time == time).ToList();
+            && x.Longitude == longitude && x.Time == TimeConversion.StripMinutes(time)).FirstOrDefault();
             return Ok(hourlyResult);
         }
 
         [Route("{latitude}/{longitude}/{time}/daily")]
         public IHttpActionResult GetDaily(int latitude, int longitude, long time)
         {
+            var range = TimeConversion.GetDailyTimestampRange(time, longitude);
             var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
-            && x.Longitude == longitude && x.Time == time).ToList();
+            && x.Longitude == longitude && x.Time >= range.Item1 && x.Time <= range.Item2 ).FirstOrDefault();
             return Ok(dailyResult);
         }
 
         [Route("{latitude}/{longitude}/daily")]
         public IHttpActionResult GetMostRecentDaily(int latitude, int longitude)
         {
+            return GetDaily(latitude, longitude, TimeConversion.ConvertToTimestamp(DateTime.Now));
             var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
             && x.Longitude == longitude).OrderByDescending(x => x.Time).FirstOrDefault();
             return Ok(dailyResult);

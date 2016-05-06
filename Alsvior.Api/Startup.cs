@@ -15,7 +15,6 @@ namespace Alsvior.Api
         public void Configuration(IAppBuilder appBuilder)
         {
             ConfigureOAuth(appBuilder);
-
             HttpConfiguration httpConfiguration = new HttpConfiguration();
             WebApiConfig.Register(httpConfiguration);
             //appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
