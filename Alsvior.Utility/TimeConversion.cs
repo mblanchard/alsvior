@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GeoTimeZone;
+using NodaTime;
 using System.Threading.Tasks;
 
 namespace Alsvior.Utility
@@ -41,11 +43,19 @@ namespace Alsvior.Utility
         {
             var day = StripHours(timestamp);
             var isWesternHemisphere = longitude <= 0;
-            var tzOffsetMin = isWesternHemisphere ? -1 : -14;
-            var tzOffsetMax = isWesternHemisphere ? 14 : 1;
+            var tzOffsetMin = isWesternHemisphere ? -2 : -14;
+            var tzOffsetMax = isWesternHemisphere ? 14 : 2;
             return new Tuple<long, long>(AddHours(day, tzOffsetMin), AddHours(day, tzOffsetMax));
         }
     
+
+        public static int GetTimezoneOffsetFromLocationAndDateInSeconds(long timestamp, int latitude, int longitude)
+        {
+            var timezone = TimeZoneLookup.GetTimeZone(FixedPointCoordConversion.ToDouble(latitude), FixedPointCoordConversion.ToDouble(longitude));
+            Instant instant = new Instant(timestamp * 1000);
+            ZonedDateTime zdt = instant.InZone(DateTimeZoneProviders.Tzdb[timezone.Result]);
+            return zdt.Offset.Milliseconds / 1000;
+        }
 
         public static DateTime ConvertToDateTime(long seconds)
         {

@@ -59,9 +59,6 @@ namespace Alsvior.Api.Controllers
         public IHttpActionResult GetMostRecentDaily(int latitude, int longitude)
         {
             return GetDaily(latitude, longitude, TimeConversion.ConvertToTimestamp(DateTime.Now));
-            var dailyResult = _cassandra.Get<WeatherDaily>(x => x.Latitude == latitude
-            && x.Longitude == longitude).OrderByDescending(x => x.Time).FirstOrDefault();
-            return Ok(dailyResult);
         }
 
 
