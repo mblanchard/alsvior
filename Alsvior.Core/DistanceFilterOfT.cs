@@ -35,7 +35,7 @@ namespace Alsvior.Core
                _originLat,
                _originLon,
                FixedPointCoordConversion.ToDouble(x.Latitude),
-               FixedPointCoordConversion.ToDouble(x.Longitude)) > _distanceThreshold
+               FixedPointCoordConversion.ToDouble(x.Longitude)) < _distanceThreshold
             );
         }
     }

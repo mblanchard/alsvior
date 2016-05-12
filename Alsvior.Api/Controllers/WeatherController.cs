@@ -34,7 +34,7 @@ namespace Alsvior.Api.Controllers
         public IHttpActionResult GetNodesForCoord(int latitude, int longitude)
         {
             var nodes = _cassandra.Get<WeatherNode>();
-            var filter = new DistanceFilter<WeatherNode>(latitude, longitude, 40000); //40 km
+            var filter = new DistanceFilter<WeatherNode>(latitude, longitude, 400*1000); //400 km
             return Ok(filter.FilterCoords(nodes));
         }
 
