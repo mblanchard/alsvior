@@ -43,6 +43,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{660E1A82
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Utility.Test", "Alsvior.Utility.Test\Alsvior.Utility.Test.csproj", "{C61EBF5D-C891-4921-862B-8049E8ED3B2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Jobs.TestEventWriter", "Alsvior.Jobs.TestEventWriter\Alsvior.Jobs.TestEventWriter.csproj", "{5CB9A265-9A76-440C-8FBD-97E5E624A852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsvior.Jobs.TestEventConsumer", "Alsvior.Jobs.TestEventConsumer\Alsvior.Jobs.TestEventConsumer.csproj", "{0508E200-CC04-4DD8-9E24-F6444852DCFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +135,22 @@ Global
 		{C61EBF5D-C891-4921-862B-8049E8ED3B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C61EBF5D-C891-4921-862B-8049E8ED3B2B}.Release|x64.ActiveCfg = Release|Any CPU
 		{C61EBF5D-C891-4921-862B-8049E8ED3B2B}.Release|x64.Build.0 = Release|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Debug|x64.Build.0 = Debug|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Release|x64.ActiveCfg = Release|Any CPU
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852}.Release|x64.Build.0 = Release|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Debug|x64.Build.0 = Debug|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Release|x64.ActiveCfg = Release|Any CPU
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +158,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03D11E4A-C443-4486-ABB1-8B5FB2EDEE2D} = {1ECEC551-93A6-48ED-8BCC-E149CB6EB9C6}
 		{C61EBF5D-C891-4921-862B-8049E8ED3B2B} = {660E1A82-86E4-48AD-A741-797486616490}
+		{5CB9A265-9A76-440C-8FBD-97E5E624A852} = {1ECEC551-93A6-48ED-8BCC-E149CB6EB9C6}
+		{0508E200-CC04-4DD8-9E24-F6444852DCFE} = {1ECEC551-93A6-48ED-8BCC-E149CB6EB9C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45

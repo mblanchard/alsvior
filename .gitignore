@@ -31,3 +31,7 @@ Alsvior.Jobs.HistoricalWeather/obj/
 Alsvior.Utility.Test/obj/
 Alsvior.Core/bin/
 Alsvior.Utility.Test/bin/
+Alsvior.Jobs.TestEventConsumer/bin/
+Alsvior.Jobs.TestEventConsumer/obj/
+Alsvior.Jobs.TestEventWriter/bin/
+Alsvior.Jobs.TestEventWriter/obj/

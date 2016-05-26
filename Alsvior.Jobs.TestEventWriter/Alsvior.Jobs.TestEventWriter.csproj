@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F2F1BD3-592F-4E8F-B578-353F5906E304}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5CB9A265-9A76-440C-8FBD-97E5E624A852}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alsvior.Representations</RootNamespace>
-    <AssemblyName>Alsvior.Representations</AssemblyName>
+    <RootNamespace>Alsvior.Jobs.TestEventWriter</RootNamespace>
+    <AssemblyName>Alsvior.Jobs.TestEventWriter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,17 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll</HintPath>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.ServiceBus.3.2.2\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,36 +50,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\CassandraConfig.cs" />
-    <Compile Include="Config\CassandraConfigSection.cs" />
-    <Compile Include="Config\EventHubConfig.cs" />
-    <Compile Include="Config\EventHubConfigSection.cs" />
-    <Compile Include="Config\SlackConfig.cs" />
-    <Compile Include="Config\SlackConfigSection.cs" />
-    <Compile Include="Config\SlackIcon.cs" />
-    <Compile Include="Config\WeatherConfig.cs" />
-    <Compile Include="Config\WeatherConfigSection.cs" />
-    <Compile Include="Interfaces\ICassandraClient.cs" />
-    <Compile Include="Interfaces\ILocatable.cs" />
-    <Compile Include="Interfaces\ISlackClientWrapper.cs" />
-    <Compile Include="Interfaces\IWeatherClientWrapper.cs" />
-    <Compile Include="Models\InverterData.cs" />
-    <Compile Include="Models\InverterNode.cs" />
-    <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\WeatherDaily.cs" />
-    <Compile Include="Models\WeatherNode.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\WeatherHourly.cs" />
-    <Compile Include="Models\WeatherReport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\ExternalConfig\Event.config">
+      <Link>Event.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\ExternalConfig\Slack.config">
+      <Link>Slack.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alsvior.Core\Alsvior.Core.csproj">
+      <Project>{99075ed7-975a-4b2c-9834-68951daa9f18}</Project>
+      <Name>Alsvior.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Alsvior.DAL\Alsvior.DAL.csproj">
+      <Project>{b7420be5-5d5e-44e9-8545-f5ee31027f15}</Project>
+      <Name>Alsvior.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Alsvior.Representations\Alsvior.Representations.csproj">
+      <Project>{9f2f1bd3-592f-4e8f-b578-353f5906e304}</Project>
+      <Name>Alsvior.Representations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Alsvior.Slack\Alsvior.Slack.csproj">
+      <Project>{aa712f1d-9436-4e6d-b38f-53d18344f188}</Project>
+      <Name>Alsvior.Slack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alsvior.Utility\Alsvior.Utility.csproj">
       <Project>{6fbd274e-208e-4232-a759-1c9dfc74b7f3}</Project>
       <Name>Alsvior.Utility</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

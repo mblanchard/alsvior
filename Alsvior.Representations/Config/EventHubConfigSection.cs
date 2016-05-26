@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Alsvior.Representations.Config
 {
-    public class EventConfigSection : ConfigurationSection
+    public class EventHubConfigSection : ConfigurationSection
     {
         #region Properties
         [ConfigurationProperty("Namespace", IsRequired = true)]
@@ -13,6 +13,27 @@ namespace Alsvior.Representations.Config
         {
             get { return (string)this["Namespace"]; }
             set { this["Namespace"] = value; }
+        }
+
+        [ConfigurationProperty("ConnectionString", IsRequired = true)]
+        public string ConnectionString
+        {
+            get { return (string)this["ConnectionString"]; }
+            set { this["ConnectionString"] = value; }
+        }
+
+        [ConfigurationProperty("StorageAccountName", IsRequired = true)]
+        public string StorageAccountName
+        {
+            get { return (string)this["StorageAccountName"]; }
+            set { this["StorageAccountName"] = value; }
+        }
+
+        [ConfigurationProperty("StorageAccountKey", IsRequired = true)]
+        public string StorageAccountKey
+        {
+            get { return (string)this["StorageAccountKey"]; }
+            set { this["StorageAccountKey"] = value; }
         }
 
         [ConfigurationProperty("Hubs", IsDefaultCollection = false)]
@@ -26,16 +47,19 @@ namespace Alsvior.Representations.Config
         }
         #endregion Properties
 
-        public static EventNamespaceConfig GetConfig()
+        public static EventHubNamespaceConfig GetConfig()
         {
-            var configSection = (EventConfigSection)ConfigurationManager.GetSection("EventConfig");
+            var configSection = (EventHubConfigSection)ConfigurationManager.GetSection("EventConfig");
             if (configSection == null)
             {
                 throw new Exception("Event config section not provided!");
             }
-            return new EventNamespaceConfig()
+            return new EventHubNamespaceConfig()
             {
                 Namespace = configSection.Namespace,
+                ConnectionString = configSection.ConnectionString,
+                StorageAccountKey = configSection.StorageAccountKey,
+                StorageAccountName = configSection.StorageAccountName,
                 Hubs = configSection.Hubs.All.Select(x => new EventHubConfig(x)).ToList()
             };
 
@@ -82,14 +106,15 @@ namespace Alsvior.Representations.Config
             get { return (string)this["name"]; }
             set { this["name"] = value; }
         }
-        [ConfigurationProperty("sendPolicy", IsRequired = true)]
+
+        [ConfigurationProperty("sendPolicy", IsRequired = false)]
         public string SendPolicy
         {
             get { return (string)this["sendPolicy"]; }
             set { this["sendPolicy"] = value; }
         }
 
-        [ConfigurationProperty("listenPolicy", IsRequired = true)]
+        [ConfigurationProperty("listenPolicy", IsRequired = false)]
         public string ListenPolicy
         {
             get { return (string)this["listenPolicy"]; }
