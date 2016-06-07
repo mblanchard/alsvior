@@ -14,8 +14,7 @@ namespace Alsvior.DAL
         #region Properties
         //IDisposable
         private bool disposed = false;  
-        private     
-        SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+        private SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
         //EventHub
         private EventHubClient _client;
         private EventHubNamespaceConfig _config;

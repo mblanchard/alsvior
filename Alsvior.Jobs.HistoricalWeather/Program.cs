@@ -1,5 +1,7 @@
 ﻿using Alsvior.DAL;
+using Alsvior.DAL.Cassandra;
 using Alsvior.Representations.Config;
+using Alsvior.Representations.Interfaces;
 using Alsvior.Representations.Models;
 using Alsvior.Representations.Slack;
 using Alsvior.Utility;
@@ -13,6 +15,7 @@ namespace Alsvior.Jobs.HistoricalWeather
     class Program
     {
         static CassandraClient _cassandraClient;
+        static ICassandraSession _session;
         static WeatherClientWrapper _weatherClient;
         static SlackClientWrapper _slackClient;
         static int DEFAULT_DAYS_TO_CHECK_FOR_HISTORICAL_WEATHER = 365;
@@ -22,7 +25,9 @@ namespace Alsvior.Jobs.HistoricalWeather
         {
             var latitude = node.Latitude;
             var longitude = node.Longitude;
-            var dailyReports = _cassandraClient.Get<WeatherDaily>(x => x.Latitude == latitude && x.Longitude == longitude).ToList();
+
+            var dailyReports = _session.Get<WeatherDaily>(x => x.Latitude == latitude && x.Longitude == longitude).ToList();
+
 
             var missingDates = new List<DateTime>();
             var isWesternHemisphere = node.Longitude <= 0;
@@ -49,7 +54,7 @@ namespace Alsvior.Jobs.HistoricalWeather
         {
             InitCassandraClient();
             InitSlackClient();
-            var weatherNodes = _cassandraClient.Get<WeatherNode>().ToList();
+            var weatherNodes = _session.Get<WeatherNode>().ToList();
             InitWeatherClient(weatherNodes);
 
             UpdateRecentWeather(weatherNodes);
@@ -76,8 +81,8 @@ namespace Alsvior.Jobs.HistoricalWeather
                         var dateTime = TimeConversion.ConvertToDateTime(result.Daily[0].Time);
 
                         //Write to C*
-                        _cassandraClient.Insert(result.Hourly);
-                        _cassandraClient.Insert(result.Daily);
+                        _session.Insert(result.Hourly);
+                        _session.Insert(result.Daily);
 
                         //Increment counters
                         nodeRequests++;
@@ -108,8 +113,8 @@ namespace Alsvior.Jobs.HistoricalWeather
                 if (result?.Hourly != null && result.Hourly.Any() && result?.Daily != null && result.Daily.Any())
                 {
                     //Write to C*
-                    _cassandraClient.Insert(result.Hourly);
-                    _cassandraClient.Insert(result.Daily);
+                    _session.Insert(result.Hourly);
+                    _session.Insert(result.Daily);
 
                     //Increment counters
                     hourlyCount += result.Hourly.Count;
@@ -142,6 +147,7 @@ namespace Alsvior.Jobs.HistoricalWeather
         {
             var config = CassandraConfigSection.GetConfig();
             _cassandraClient = new CassandraClient(config);
+            _session = _cassandraClient.CreateSession();
         }
 
         private static void InitWeatherClient(List<WeatherNode> nodes)

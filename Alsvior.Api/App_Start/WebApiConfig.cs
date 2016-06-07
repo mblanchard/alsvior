@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Controllers;
+using System.Web.Http.Routing;
 
 namespace Alsvior.Api
 {
@@ -21,7 +23,8 @@ namespace Alsvior.Api
 
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -29,9 +32,20 @@ namespace Alsvior.Api
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
+
             //Return JSON
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
+        }
+    }
+    public  class CustomDirectRouteProvider : DefaultDirectRouteProvider
+    {
+        protected override IReadOnlyList<IDirectRouteFactory>
+        GetActionRouteFactories(HttpActionDescriptor actionDescriptor)
+        {
+            return actionDescriptor.GetCustomAttributes<IDirectRouteFactory>
+            (inherit: true);
         }
     }
 }

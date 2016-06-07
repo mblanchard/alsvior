@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace Alsvior.Representations.Models
 {
-    public class WeatherDaily: ILocatable
+    public class WeatherDaily: ILocatable, IChronometricable
     {
         #region Coord Properties
         public int Latitude { get; set; }
         public int Longitude { get; set; }
         #endregion Coord Properties
+
+        #region Time Properties
+        public long Time { get; set; }
+        #endregion Time Properties
 
         #region Weather Properties
         public float ApparentTemperatureMax { get; set; }
@@ -36,7 +40,6 @@ namespace Alsvior.Representations.Models
         public long TemperatureMaxTime { get; set; }
         public float TemperatureMin { get; set; }
         public long TemperatureMinTime { get; set; }
-        public long Time { get; set; }
         public float Visibility { get; set; }
         public float WindBearing { get; set; }
         public float WindSpeed { get; set; }

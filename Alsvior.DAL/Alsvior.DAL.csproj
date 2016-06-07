@@ -111,7 +111,8 @@
     <Compile Include="Auth\AuthContext.cs" />
     <Compile Include="Auth\AuthRepository.cs" />
     <Compile Include="Auth\UserModel.cs" />
-    <Compile Include="CassandraClient.cs" />
+    <Compile Include="Cassandra\CassandraClient.cs" />
+    <Compile Include="Cassandra\CassandraSession.cs" />
     <Compile Include="DALDependencyModule.cs" />
     <Compile Include="EventHubConsumer.cs" />
     <Compile Include="EventHubProducer.cs" />

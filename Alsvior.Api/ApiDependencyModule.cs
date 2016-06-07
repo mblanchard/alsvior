@@ -1,4 +1,6 @@
 ﻿using Alsvior.Api.Controllers;
+using Alsvior.Api.Controllers.Geospatial;
+using Alsvior.Api.Controllers.GeospatialDatasets;
 using Autofac;
 using System;
 using System.Collections.Generic;
@@ -11,8 +13,10 @@ namespace Alsvior.Api
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InverterController>().InstancePerRequest();
-            builder.RegisterType<WeatherController>().InstancePerRequest();
+            builder.RegisterType<WeatherNodeController>().InstancePerRequest();
+            builder.RegisterType<InverterNodeController>().InstancePerRequest();
+            builder.RegisterType<WeatherHourlyController>().InstancePerRequest();
+            builder.RegisterType<WeatherDailyController>().InstancePerRequest();
             base.Load(builder);
         }
     }

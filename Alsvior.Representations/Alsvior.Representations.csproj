@@ -58,7 +58,9 @@
     <Compile Include="Config\SlackIcon.cs" />
     <Compile Include="Config\WeatherConfig.cs" />
     <Compile Include="Config\WeatherConfigSection.cs" />
-    <Compile Include="Interfaces\ICassandraClient.cs" />
+    <Compile Include="Interfaces\Cassandra\ICassandraClient.cs" />
+    <Compile Include="Interfaces\Cassandra\ICassandraSession.cs" />
+    <Compile Include="Interfaces\IChronometricable.cs" />
     <Compile Include="Interfaces\ILocatable.cs" />
     <Compile Include="Interfaces\ISlackClientWrapper.cs" />
     <Compile Include="Interfaces\IWeatherClientWrapper.cs" />
