@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\Cassandra\ICassandraClient.cs" />
     <Compile Include="Interfaces\Cassandra\ICassandraSession.cs" />
     <Compile Include="Interfaces\IChronometricable.cs" />
+    <Compile Include="Interfaces\IDatasetController.cs" />
     <Compile Include="Interfaces\ILocatable.cs" />
     <Compile Include="Interfaces\ISlackClientWrapper.cs" />
     <Compile Include="Interfaces\IWeatherClientWrapper.cs" />

@@ -166,6 +166,7 @@
     <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GeospatialDatasets\DatasetMetadataController.cs" />
     <Compile Include="Controllers\GeospatialDatasets\GeospatialDatasetController.cs" />
     <Compile Include="Controllers\GeospatialDatasets\InverterNodeController.cs" />
     <Compile Include="Controllers\GeospatialDatasets\WeatherNodeController.cs" />
@@ -173,7 +174,7 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\GeospatialDatasets\WeatherDailyController.cs" />
     <Compile Include="Controllers\GeospatialDatasets\WeatherHourlyController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="DatasetControllerCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CORSModule.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />

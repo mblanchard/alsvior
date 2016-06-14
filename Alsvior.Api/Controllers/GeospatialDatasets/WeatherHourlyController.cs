@@ -12,11 +12,9 @@ namespace Alsvior.Api.Controllers.Geospatial
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/weatherHourly")]
     [Authorize]
-    public class WeatherHourlyController : GeospatialTimeSeriesDatesetController<WeatherHourly>
+    public class WeatherHourlyController : GeospatialTimeSeriesDatesetController<WeatherHourly>, IGeospatialDatasetController
     {
         public WeatherHourlyController(ICassandraClient client) : base(client) { }
-
-
     }
 
 }

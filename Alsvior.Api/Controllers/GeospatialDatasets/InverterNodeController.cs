@@ -18,7 +18,7 @@ namespace Alsvior.Api.Controllers.GeospatialDatasets
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/inverterNode")]
-    public class InverterNodeController : GeospatialDatasetController<InverterNode>
+    public class InverterNodeController : GeospatialDatasetController<InverterNode>, IGeospatialDatasetController
     {
         public InverterNodeController(ICassandraClient client) : base(client) {
         }

@@ -43,6 +43,5 @@ namespace Alsvior.Api.Controllers
             var node = _session.Get<T>(x=> x.Latitude == latitude && x.Longitude == longitude);
             return Ok(node);
         }
-
     }
 }

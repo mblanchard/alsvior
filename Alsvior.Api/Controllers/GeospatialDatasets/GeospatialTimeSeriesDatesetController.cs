@@ -56,7 +56,7 @@ namespace Alsvior.Api.Controllers
 
 
         [Route("{token}/connect")]
-        public HttpResponseMessage Connect(string token)
+        public virtual HttpResponseMessage Connect(string token)
         {
             if (HttpContext.Current.IsWebSocketRequest) { HttpContext.Current.AcceptWebSocketRequest(ProcessNotification); }
             return new HttpResponseMessage(HttpStatusCode.SwitchingProtocols);

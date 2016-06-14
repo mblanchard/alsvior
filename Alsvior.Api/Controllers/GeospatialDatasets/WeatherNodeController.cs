@@ -13,7 +13,7 @@ namespace Alsvior.Api.Controllers.GeospatialDatasets
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/weatherNode")]
     [Authorize]
-    public class WeatherNodeController : GeospatialDatasetController<WeatherNode>
+    public class WeatherNodeController : GeospatialDatasetController<WeatherNode>, IGeospatialDatasetController
     {
         public WeatherNodeController(ICassandraClient client) : base(client) { }
     }

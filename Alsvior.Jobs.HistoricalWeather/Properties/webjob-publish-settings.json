@@ -1,9 +1,9 @@
 ﻿{
   "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
   "webJobName": "AlsviorJobs-HistoricalWeather",
-  "startTime": "2016-05-10T00:00:00-06:00",
-  "endTime": "2016-05-10T00:30:00-06:00",
-  "jobRecurrenceFrequency": "Hour",
+  "startTime": "2016-06-07T08:00:00-06:00",
+  "endTime": "2016-06-07T08:30:00-06:00",
+  "jobRecurrenceFrequency": "Day",
   "interval": 1,
   "runMode": "Scheduled"
 }
