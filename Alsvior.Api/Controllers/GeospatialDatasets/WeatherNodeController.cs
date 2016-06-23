@@ -10,10 +10,8 @@ using System.Web.Http.Cors;
 
 namespace Alsvior.Api.Controllers.GeospatialDatasets
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/weatherNode")]
-    [Authorize]
-    public class WeatherNodeController : GeospatialDatasetController<WeatherNode>, IGeospatialDatasetController
+    public class WeatherNodeController : GeospatialDatasetController<WeatherNode>
     {
         public WeatherNodeController(ICassandraClient client) : base(client) { }
     }

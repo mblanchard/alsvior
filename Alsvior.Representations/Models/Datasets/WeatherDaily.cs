@@ -1,4 +1,5 @@
 ﻿using Alsvior.Representations.Interfaces;
+using Alsvior.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Alsvior.Representations.Models
 {
+    [AssociatedGeospatialModel(typeof(WeatherNode))]
     public class WeatherDaily: ILocatable, IChronometricable
     {
         #region Coord Properties

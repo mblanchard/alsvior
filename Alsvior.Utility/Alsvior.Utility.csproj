@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoundGeospatialDatasetAttribute.cs" />
     <Compile Include="FixedPointCoordConversion.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="ILocatable.cs" />

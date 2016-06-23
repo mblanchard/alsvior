@@ -3,6 +3,7 @@ using Alsvior.Representations.Models;
 using Alsvior.Utility;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
@@ -17,15 +18,22 @@ using System.Web.WebSockets;
 namespace Alsvior.Api.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public abstract class GeospatialTimeSeriesDatesetController<T> : GeospatialDatasetController<T> where T : class, ILocatable, IChronometricable
+    public abstract class GeospatialTimeSeriesDatesetController<T>: ApiController where T : class, ILocatable, IChronometricable
     {
-        public GeospatialTimeSeriesDatesetController(ICassandraClient client): base(client) { }
+        private ICassandraClient _cassandra;
+        protected ICassandraSession _session;
+
+        public GeospatialTimeSeriesDatesetController(ICassandraClient cassandra) {
+            _cassandra = cassandra;
+            _session = _cassandra.CreateSession();
+        }
 
         [Authorize]
         [Route("{latitude}/{longitude}/{time}")]
         public virtual IHttpActionResult GetAtTime(int latitude, int longitude, long time)
         {
             var range = TimeConversion.GetDailyTimestampRange(time, longitude);
+
             var dailyResult = _session.Get<T>(x => 
                 x.Latitude == latitude && 
                 x.Longitude == longitude && 

@@ -16,9 +16,8 @@ using System.Web.WebSockets;
 
 namespace Alsvior.Api.Controllers.GeospatialDatasets
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/inverterNode")]
-    public class InverterNodeController : GeospatialDatasetController<InverterNode>, IGeospatialDatasetController
+    public class InverterNodeController : GeospatialDatasetController<InverterNode>
     {
         public InverterNodeController(ICassandraClient client) : base(client) {
         }

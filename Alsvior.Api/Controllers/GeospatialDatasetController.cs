@@ -1,12 +1,11 @@
 ﻿using Alsvior.Core;
 using Alsvior.Representations.Interfaces;
-using System;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace Alsvior.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public abstract class GeospatialDatasetController<T> : ApiController where T : class, ILocatable
     {
         private ICassandraClient _cassandra;
@@ -14,12 +13,11 @@ namespace Alsvior.Api.Controllers
 
         public GeospatialDatasetController(ICassandraClient cassandra)
         {
-            Console.WriteLine(HttpContext.Current.Request.RawUrl);
             _cassandra = cassandra;
             _session = _cassandra.CreateSession();
         }
 
-        
+        [Authorize]
         [Route("")]
         public virtual IHttpActionResult GetAll()
         {

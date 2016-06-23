@@ -61,18 +61,19 @@
     <Compile Include="Interfaces\Cassandra\ICassandraClient.cs" />
     <Compile Include="Interfaces\Cassandra\ICassandraSession.cs" />
     <Compile Include="Interfaces\IChronometricable.cs" />
-    <Compile Include="Interfaces\IDatasetController.cs" />
     <Compile Include="Interfaces\ILocatable.cs" />
     <Compile Include="Interfaces\ISlackClientWrapper.cs" />
     <Compile Include="Interfaces\IWeatherClientWrapper.cs" />
-    <Compile Include="Models\InverterData.cs" />
-    <Compile Include="Models\InverterNode.cs" />
+    <Compile Include="Models\DatasetEndpointDiscovery\TimeSeriesEndpoint.cs" />
+    <Compile Include="Models\DatasetEndpointDiscovery\GeospatialDatasetEndpoint.cs" />
+    <Compile Include="Models\Datasets\InverterData.cs" />
+    <Compile Include="Models\Datasets\InverterNode.cs" />
     <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\WeatherDaily.cs" />
-    <Compile Include="Models\WeatherNode.cs" />
+    <Compile Include="Models\Datasets\WeatherDaily.cs" />
+    <Compile Include="Models\Datasets\WeatherNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\WeatherHourly.cs" />
-    <Compile Include="Models\WeatherReport.cs" />
+    <Compile Include="Models\Datasets\WeatherHourly.cs" />
+    <Compile Include="Models\WeatherETL\WeatherReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alsvior.Utility\Alsvior.Utility.csproj">

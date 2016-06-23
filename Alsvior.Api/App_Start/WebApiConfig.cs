@@ -13,6 +13,7 @@ namespace Alsvior.Api
     {
         public static void Register(HttpConfiguration config)
         {
+            
             //Container Config
             var container = ContainerConfig.BuildContainer(config);
             var webApiResolver = ContainerConfig.GetApiDependencyResolver(container);
@@ -33,7 +34,6 @@ namespace Alsvior.Api
             );
 
             config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
-
             //Return JSON
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 

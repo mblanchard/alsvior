@@ -1,12 +1,9 @@
 ﻿using Alsvior.Representations.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Alsvior.Utility;
 
 namespace Alsvior.Representations.Models
 {
+    [AssociatedGeospatialModel(typeof(WeatherNode))]
     public class WeatherHourly : ILocatable, IChronometricable
     {
         #region Coord Properties

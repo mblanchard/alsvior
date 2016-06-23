@@ -9,10 +9,8 @@ using System.Web.Http.Cors;
 
 namespace Alsvior.Api.Controllers.Geospatial
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/weatherHourly")]
-    [Authorize]
-    public class WeatherHourlyController : GeospatialTimeSeriesDatesetController<WeatherHourly>, IGeospatialDatasetController
+    public class WeatherHourlyController : GeospatialTimeSeriesDatesetController<WeatherHourly>
     {
         public WeatherHourlyController(ICassandraClient client) : base(client) { }
     }
